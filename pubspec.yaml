@@ -1,5 +1,5 @@
-name: app_template
-description:  A Flutter App Template
+name: grassport
+description:  Project to generate secure passwords and save them locally
 publish_to: 'none' 
 
 version: 1.0.0+1
@@ -44,15 +44,18 @@ dependencies:
   # Encryption
   crypto: ^3.0.2
   # Asset Generator
-  # flutter_gen: ^5.1.0+1
+  # flutter_gen: ^5.2.0
 
 
-  # * State Management
+  # * State Management and DI
   # Enhanced over provider library to manage state 
   flutter_riverpod: ^2.1.1
   # BLoC pattern
   flutter_bloc: ^8.1.1
-
+  # Dependency Injection
+  get_it: ^7.2.0
+  # Form Representation
+  formz: ^0.4.1
 
   # * Utilities
   # Tool for UI adaptability
@@ -87,6 +90,10 @@ dependencies:
   cached_network_image: ^3.2.3
   # Manage Permissions
   permission_handler: ^10.2.0
+  # BioMetric Authentication
+  local_auth: ^2.1.3
+  # Generate Fake Data
+  faker: ^2.1.0
 
   # * Annotations
   # Freezed
@@ -121,6 +128,8 @@ dependencies:
   showcaseview: ^2.0.0+1
   # Percentage Indicator
   percent_indicator: ^4.2.2
+  # Nav Bar
+  google_nav_bar: ^5.0.6
  
 
 
@@ -134,8 +143,6 @@ dev_dependencies:
     sdk: flutter
   # Data Mocking
   mockito: ^5.3.2
-  # Generate Fake Data
-  faker: ^2.0.0
   
   # * Linter and code organization
   # Linter
@@ -152,7 +159,7 @@ dev_dependencies:
   # Generator for local data storage
   isar_generator: ^3.0.5
   # Generating Asset Files
-  flutter_gen_runner: ^5.1.0+1
+  flutter_gen_runner: ^5.2.0
 
 
 flutter_icons:
@@ -170,7 +177,6 @@ flutter:
 
   assets:
     - assets/icons/
-    - assets/images/
     - assets/splash/
     - lib/src/core/env/.env.development
     - lib/src/core/env/.env.production
@@ -184,7 +190,7 @@ flutter_native_splash:
   color_dark: "000000"
   image: assets/splash/light.png
   image_dark: assets/splash/dark.png
-  fullscreen: true
+  fullscreen: false
   android_gravity: center
   ios_gravity: center
   android_12:
@@ -198,10 +204,9 @@ flavorizr:
   app:
     android:
       flavorDimensions: "flavor-type"
-      customConfig:
-        minSdkVersion: 23
     ios: 
       buildSettings: {}
+    
   flavors:
     dev:
       app:
@@ -210,10 +215,12 @@ flavorizr:
         buildNumber: "1"
         icon: "assets/icons/dev.png"
       android:
-        applicationId: "kz.m-1o.project-dev"
+        applicationId: "kz.m_1o.pass_gen.dev"
         flavorName: "Dev"
+        customConfig:
+          minSdkVersion: 23
       ios: 
-        bundleId: "kz.m-1o.project-dev"
+        bundleId: "kz.m-1o.pass_gen-dev"
     
     staging:
       app:
@@ -222,8 +229,10 @@ flavorizr:
         buildNumber: "1"
         icon: "assets/icons/stage.png"
       android:
-        applicationId: "kz.m-1o.project-staging"
+        applicationId: "kz.m_1o.pass_gen.staging"
         flavorName: "Staging"
+        customConfig:
+          minSdkVersion: 23
       ios: 
         bundleId: "kz.m-1o.project-staging"
 
@@ -234,9 +243,11 @@ flavorizr:
         buildNumber: "1"
         icon: "assets/icons/prod.png"
       android:
-        applicationId: "kz.m-1o.project"
+        applicationId: "kz.m_1o.pass_gen"
         flavorName: "Prod"
+        customConfig:
+          minSdkVersion: 23
       ios: 
-        bundleId: "kz.m-1o.project"
+        bundleId: "kz.m-1o.pass_gen"
 
     

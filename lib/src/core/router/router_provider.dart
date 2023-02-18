@@ -1,20 +1,26 @@
 import 'dart:async';
 
-import 'package:app_template/src/app/default_main_page.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/settings/presentation/pages/settings.dart';
+import '../../app/app_page.dart';
+import '../../features/mvc/view/passwords/passwords_page.dart';
+import '../../features/mvc/view/settings/settings_page.dart';
 import '../widgets/onboarding/onboarding.dart';
 import 'router_pages.dart';
 
 part 'route_list.dart';
+part 'route_transitions.dart';
 part 'router_names.dart';
 part 'router_paths.dart';
 
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _shellNavigatorKey = GlobalKey<NavigatorState>();
+
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
+    navigatorKey: _rootNavigatorKey,
     initialLocation: RoutePaths.main,
     redirect: ref.watch(routerServiceProvider).redirectLogic,
     debugLogDiagnostics: true,

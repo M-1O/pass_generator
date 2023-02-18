@@ -1,5 +1,4 @@
-import 'package:app_template/src/app/application.dart';
-
+import 'src/app/application.dart';
 import 'src/app/imports.dart';
 
 void main() async {
@@ -13,7 +12,6 @@ void main() async {
   // Set status bar theme
   UIHelpers.statusBarTheme();
   // Prevent landscape mode
-
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (_) {
       runApp(

@@ -1,4 +1,4 @@
-import 'package:app_template/src/app/imports.dart';
+import '../../../app/imports.dart';
 
 class Onboarding extends StatelessWidget {
   const Onboarding({super.key});

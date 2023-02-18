@@ -1,5 +1,7 @@
-import 'dart:async';
+import 'dart:developer';
+import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../core/localization/l10n.dart';
@@ -23,15 +25,26 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
-    // Remove native splash screen after 2 seconds
-    Timer(
-      const Duration(seconds: 1),
-      FlutterNativeSplash.remove,
-    );
     // MaterialApp with ScreenUtilInit for responsive UI
+
+    if (Platform.isIOS) {
+      return ScreenUtilInit(
+        minTextAdapt: true,
+        designSize: const Size(390, 844),
+        builder: (context, child) => SafeArea(
+          top: false,
+          bottom: false,
+          child: _buildCupertinoApp(flavor, router),
+        ),
+      );
+    }
     return ScreenUtilInit(
+      minTextAdapt: true,
       designSize: const Size(390, 844),
-      builder: (context, child) => _buildApp(flavor, router),
+      builder: (context, child) => SafeArea(
+        bottom: false,
+        child: _buildCupertinoApp(flavor, router),
+      ),
     );
   }
 }

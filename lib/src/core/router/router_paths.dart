@@ -6,5 +6,6 @@ class RoutePaths {
 
   // Core app
   static const String main = '/';
-  static const String settings = 'settings';
+  static const String settings = '/settings';
+  static const String passwords = '/passwords';
 }

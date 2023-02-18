@@ -1,35 +1,38 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 part 'color_schemes.dart';
+part 'colors.dart';
 part 'text_theme.dart';
 part 'theme_provider.dart';
 
-class AppTheme {
+class CupertinoAppTheme {
   /// Due to Flutter limitations,
   /// 'textTheme' must be defined in every copyWith
 
-  static final appTheme = ThemeData(
+  static const cupertinoTheme = CupertinoThemeData(
     brightness: Brightness.dark,
-    textTheme: textTheme,
+    primaryColor: green,
+    primaryContrastingColor: yellow,
+    // scaffoldBackgroundColor: CupertinoColors.white,
+    scaffoldBackgroundColor: green,
+    textTheme: cupertinoTextTheme,
+    barBackgroundColor: darkGreen,
   );
 
-  static final appThemeDark = appTheme.copyWith(
+  static final cupertinoDark = cupertinoTheme.copyWith(
     brightness: Brightness.dark,
-    textTheme: textTheme,
   );
 
-  static final appThemeLight = appTheme.copyWith(
+  static final cupertinoLight = cupertinoTheme.copyWith(
     brightness: Brightness.dark,
-    textTheme: textTheme,
   );
 }
 
 class MaterialAppTheme {
   static final materialTheme = ThemeData(
-    colorSchemeSeed: Colors.amber,
+    colorSchemeSeed: darkGreen,
     useMaterial3: true,
     brightness: Brightness.dark,
     textTheme: textTheme,

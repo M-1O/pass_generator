@@ -1,5 +1,4 @@
-import 'package:app_template/src/app/application.dart';
-
+import 'src/app/application.dart';
 import 'src/app/imports.dart';
 
 void main() async {

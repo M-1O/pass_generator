@@ -6,11 +6,12 @@ class RouteNames {
 
   // Main
   static const String main = 'main';
+  static const String passwords = 'passwords';
   static const String settings = 'settings';
 }
 
-Map<String, String> _appRoutes = {
-  RouteNames.onboarding: '/onboarding',
-  RouteNames.main: '/',
-  RouteNames.settings: '/settings',
-};
+// Map<String, String> _appRoutes = {
+//   RouteNames.onboarding: '/onboarding',
+//   RouteNames.main: '/',
+//   RouteNames.settings: '/settings',
+// };

@@ -8,20 +8,33 @@ import '../../theme/theme.dart';
 class UIHelpers {
   static void statusBarTheme() {
     if (Platform.isIOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: Colors.white),
+      SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.edgeToEdge,
       );
       SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.white),
+        const SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+        ),
       );
-    } else {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle.light.copyWith(
+          statusBarColor: Colors.white,
+        ),
+      );
+    }
+    if (!Platform.isIOS) {
+      SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.edgeToEdge,
+      );
       SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(
-            statusBarColor: AppTheme.appThemeDark.backgroundColor),
+          statusBarColor: MaterialAppTheme.materialLight.colorScheme.background,
+        ),
       );
       SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle.light
-            .copyWith(statusBarColor: AppTheme.appThemeDark.backgroundColor),
+        SystemUiOverlayStyle.light.copyWith(
+          statusBarColor: MaterialAppTheme.materialLight.colorScheme.background,
+        ),
       );
     }
   }
